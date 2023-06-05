@@ -51,7 +51,8 @@ func NewSnowflakeGenerator() *SnowflakeGenerator {
 
 // NewSnowflakeGeneratorFromConfig creates a new SnowflakeGenerator.
 // This is the same as NewSnowflakeGenerator, but the bits are configurable.
-func NewSnowflakeGeneratorFromConfig(epoch uint64, timestampBits uint8, machineBits uint8, machineID uint64, sequenceBits uint8) *SnowflakeGenerator {
+func NewSnowflakeGeneratorFromConfig(
+	epoch uint64, timestampBits uint8, machineBits uint8, machineID uint64, sequenceBits uint8) *SnowflakeGenerator {
 	return &SnowflakeGenerator{
 		epoch:         epoch,
 		timestampBits: timestampBits,

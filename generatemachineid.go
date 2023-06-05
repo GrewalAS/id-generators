@@ -16,12 +16,12 @@ func GenerateMachineID(machineBits uint8) uint64 {
 
 	for _, inter := range interfaces {
 		if inter.HardwareAddr != nil {
-			mac, err := hex.DecodeString(inter.HardwareAddr.String())
-			if err != nil {
+			mac, decodeErr := hex.DecodeString(inter.HardwareAddr.String())
+			if decodeErr != nil {
 				panic("Failed to convert MAC address to a number")
 			}
 			machineID := binary.BigEndian.Uint64(mac)
-			machineID = machineID & ((1 << machineBits) - 1)
+			machineID &= (1 << machineBits) - 1
 			return machineID
 		}
 	}
